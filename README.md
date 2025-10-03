@@ -33,7 +33,9 @@ The oil and gas industry has accumulated **$56.8 billion** in environmental viol
 ---
 
 ## 🏗️ Architecture
-┌─────────────┐ │ User │ └──────┬──────┘ │ Upload PDF ▼ ┌─────────────────────────────────────┐ │ Streamlit UI │ └──────┬──────────────────────────────┘ │ ▼ ┌─────────────────────────────────────┐ │ Filter Agent (Classification) │ │ ✓ Compliance-relevant? Yes/No │ └──────┬──────────────────────────────┘ │ If Yes ▼ ┌─────────────────────────────────────┐ │ RAG Ingestion Pipeline │ │ → Chunk → Embed → Store Supabase │ └──────┬──────────────────────────────┘ │ ▼ ┌─────────────────────────────────────┐ │ Supervisor Agent (LangGraph) │ │ Routes to specialized agents │ └──────┬──────────────────────────────┘ │ ├──→ Compliance Retriever Agent │ (Semantic search regulations) │ ├──→ Gap Analyzer Agent │ (Compare doc vs regulations) │ ├──→ Report Generator Agent │ (Executive summary + actions) │ └──→ Web Search Agent (Recent guidance & context)
+
+
+![Multi Agent Architecture](images/multi_agent_RAG_architecture.png)
 
 
 ---
@@ -51,6 +53,12 @@ The oil and gas industry has accumulated **$56.8 billion** in environmental viol
   - [Tavily](https://tavily.com/) (web search)
   - [Supabase](https://supabase.com/) (vector store)
   - [LangSmith](https://smith.langchain.com/settings) (optional, tracing)
+
+LangGraph Studio/LangSmith
+![LangGraph Studio](images/langsmith.png)
+
+Streamlit Compliance GAP
+![Streamlit](images/streamlit_no_compliant.png)
 
 ### Local Development
 
