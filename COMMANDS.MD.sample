@@ -1,0 +1,36 @@
+# Deployment Commands - Sample
+
+Replace the following variables with your own values:
+
+- `${GCP_PROJECT_ID}` - Your Google Cloud Project ID
+- `${GCP_REGION}` - Your preferred region (e.g., us-central1)
+- `${ARTIFACT_REPO_NAME}` - Your Artifact Registry repository name
+- `${SERVICE_NAME}` - Your Cloud Run service name
+
+## 1. Create Artifact Registry Repository
+
+```bash
+gcloud artifacts repositories create ${ARTIFACT_REPO_NAME} \
+  --repository-format docker \
+  --project ${GCP_PROJECT_ID} \
+  --location ${GCP_REGION}
+
+# 2. Build and push Docker image
+  gcloud builds submit \
+  --config=cloudbuild.yaml \
+  --project ${GCP_PROJECT_ID}
+
+# 3 Deploy to Cloud Run
+gcloud run services replace service.yaml \
+  --region ${GCP_REGION} \
+  --project ${GCP_PROJECT_ID}
+
+#4. Set IAM Policy (Optional - for public access)
+
+gcloud run services set-iam-policy ${SERVICE_NAME} \
+  gcr-service-policy.yaml \
+  --region ${GCP_REGION} \
+  --project ${GCP_PROJECT_ID}
+
+
+  

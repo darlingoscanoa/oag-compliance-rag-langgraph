@@ -1,0 +1,24 @@
+{
+    "name": "LangGraph-Devcontainer",
+    "build": {
+      "dockerfile": "../Dockerfile.dev"
+    },
+    "customizations": {
+      "vscode": {
+          "extensions": [
+              "ms-python.python",
+              "ms-python.vscode-pylance",
+              "ms-python.black-formatter",
+              "ms-python.debugpy",
+              "ms-azuretools.vscode-docker"
+          ],
+          "settings": {}
+      }
+    },
+    "forwardPorts": [
+      "5678:5678"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/ws/code,type=bind,consistency=delegated",
+    "workspaceFolder": "/ws/code",
+    "runArgs": []
+}

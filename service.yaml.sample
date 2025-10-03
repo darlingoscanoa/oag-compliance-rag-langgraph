@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: your-service-name  # CHANGE THIS to your Cloud Run service name
+spec:
+  template:
+    spec:
+      containers:
+      - image: us-central1-docker.pkg.dev/YOUR_PROJECT_ID/YOUR_REPO/YOUR_SERVICE:latest  # CHANGE THIS
+        ports:
+        - containerPort: 4000
+        resources:
+          limits:
+            memory: 2Gi
+            cpu: "2"

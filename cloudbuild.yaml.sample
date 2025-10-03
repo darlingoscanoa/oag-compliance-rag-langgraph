@@ -1,0 +1,22 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REPO}/${_SERVICE_NAME}:latest'
+      - '-f'
+      - 'Dockerfile.prod'
+      - '.'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REPO}/${_SERVICE_NAME}:latest'
+
+substitutions:
+  _REGION: 'us-central1'  # Change to your region
+  _ARTIFACT_REPO: 'your-artifact-repo-name'  # Change to your Artifact Registry repo name
+  _SERVICE_NAME: 'your-service-name'  # Change to your Cloud Run service name
+
+options:
+  logging: CLOUD_LOGGING_ONLY

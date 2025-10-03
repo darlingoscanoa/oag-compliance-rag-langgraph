@@ -1,0 +1,26 @@
+streamlit
+
+# Ecosistema LangChain
+langchain
+langgraph
+langgraph-supervisor
+langchain-google-genai
+langchain-openai
+langchain-chroma
+langchain-community
+
+pypdf==3.17.4
+
+# Dejar que pip resuelva la compatibilidad
+supabase
+httpx
+
+python-dotenv
+tiktoken==0.7.0
+
+tavily-python
+
+# Testing dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.1
